@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { StatementService } from './core/services/statement/statement.service';
 
 @Component( {
 	selector: 'app-root',
@@ -8,9 +7,6 @@ import { StatementService } from './core/services/statement/statement.service';
 } )
 export class AppComponent {
 
-	constructor( private _statementService: StatementService ) {
-		this._statementService.get().subscribe( resp => {
-			console.log( resp );
-		} );
+	constructor() {
 	}
 }
