@@ -18,4 +18,8 @@ export class StatementsComponent implements OnInit {
 			this.data = resp;
 		} );
 	}
+
+	selectStatement( row ) {
+		console.log( row );
+	}
 }
