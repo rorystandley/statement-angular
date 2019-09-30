@@ -1,6 +1,6 @@
 <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
-        <app-table-data *ngIf="data" [data]="data" [displayedColumns]="['id', 'month', 'year']" (rowSelected)="selectStatement($event)"></app-table-data>
+        <app-table-data *ngIf="data" [data]="data" [displayedColumns]="['_id', 'month', 'year']" (rowSelected)="selectStatement($event)"></app-table-data>
     </mat-grid-tile>
     <mat-grid-tile>
         2
