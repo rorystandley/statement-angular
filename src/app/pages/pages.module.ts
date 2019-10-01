@@ -3,6 +3,7 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { StatementsComponent } from "./statements/statements.component";
 import {
+	MatCheckboxModule,
 	MatGridListModule,
 	MatPaginatorModule,
 	MatTableModule,
@@ -18,6 +19,7 @@ import { CommonModule } from "@angular/common";
 		MatToolbarModule,
 		MatTableModule,
 		MatPaginatorModule,
+		MatCheckboxModule,
 		CommonModule
 	],
 	declarations: [
