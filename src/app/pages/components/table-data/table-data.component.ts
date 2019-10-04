@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from "@angular/material";
 import { SelectionModel } from "@angular/cdk/collections";
+import { StatementService } from "../../../core/services/statement/statement.service";
 
 @Component( {
 	selector: 'app-table-data',
@@ -13,11 +14,11 @@ export class TableDataComponent implements OnChanges {
 	@Input() data;
 	@Output() rowSelected = new EventEmitter();
 	@ViewChild( MatPaginator, { static: true } ) paginator: MatPaginator;
-	selection = new SelectionModel(true, []);
+	selection = new SelectionModel( true, [] );
 	dataSource;
 
 
-	constructor() {
+	constructor( private _statementService: StatementService ) {
 
 	}
 
@@ -36,15 +37,27 @@ export class TableDataComponent implements OnChanges {
 	masterToggle() {
 		this.isAllSelected() ?
 			this.selection.clear() :
-			this.dataSource.data.forEach(row => this.selection.select(row));
+			this.dataSource.data.forEach( row => this.selection.select( row ) );
 	}
 
 	/** The label for the checkbox on the passed row */
-	checkboxLabel(row?): string {
-		if (!row) {
+	checkboxLabel( row? ): string {
+		if ( !row ) {
 			return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
 		}
-		return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+		return `${this.selection.isSelected( row ) ? 'deselect' : 'select'} row ${row.position + 1}`;
+	}
+
+	deleteSelected() {
+		if ( confirm( 'Are  you sure?' ) ) {
+			this.selection.selected.forEach( row => {
+				// this.selection.deselect( row );
+				console.log(row._id)
+				this._statementService.delete( row._id ).subscribe( resp => {
+					console.log( resp );
+				} );
+			} );
+		}
 	}
 
 	emit( row ) {

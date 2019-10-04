@@ -13,4 +13,8 @@ export class StatementService {
 		return this._http.get( environment.apiEndpoint + '/statements' );
 	}
 
+	delete( id ): Observable<any> {
+		return this._http.delete( environment.apiEndpoint + `/statement/${id}` );
+	}
+
 }
