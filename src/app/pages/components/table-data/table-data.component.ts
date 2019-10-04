@@ -11,6 +11,7 @@ export class TableDataComponent implements OnChanges {
 
 	@Input() displayedColumns: string[];
 	@Input() data;
+	@Input() enableDelete = true;
 	@Output() rowSelected = new EventEmitter();
 	@Output() rowDeleted = new EventEmitter();
 	@ViewChild( MatPaginator, { static: true } ) paginator: MatPaginator;

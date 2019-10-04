@@ -4,7 +4,7 @@
                         (rowSelected)="selectStatement($event)" (rowDeleted)="deleteRow($event)"></app-table-data>
     </mat-grid-tile>
     <mat-grid-tile>
-        <app-table-data *ngIf="selectedStatement.length" [data]="selectedStatement"
+        <app-table-data *ngIf="selectedStatement.length" [data]="selectedStatement" [enableDelete]="false"
                         [displayedColumns]="['description', 'category', 'amount']"></app-table-data>
     </mat-grid-tile>
     <mat-grid-tile>3</mat-grid-tile>
