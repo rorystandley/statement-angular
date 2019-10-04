@@ -9,6 +9,7 @@ import { StatementService } from "../../core/services/statement/statement.servic
 export class StatementsComponent implements OnInit {
 
 	data = [];
+	selectedStatement = [];
 
 	constructor( private _statementService: StatementService ) {
 	}
@@ -24,7 +25,7 @@ export class StatementsComponent implements OnInit {
 	}
 
 	selectStatement( row ) {
-		console.log( row );
+		this.selectedStatement = row.transactions;
 	}
 
 	deleteRow( id ) {

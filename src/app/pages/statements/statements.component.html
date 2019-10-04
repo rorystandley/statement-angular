@@ -1,10 +1,11 @@
 <mat-grid-list cols="2" rowHeight="2:1">
     <mat-grid-tile>
-        <app-table-data *ngIf="data" [data]="data" [displayedColumns]="['select', '_id', 'month', 'year']"
+        <app-table-data *ngIf="data.length" [data]="data" [displayedColumns]="['select', '_id', 'month', 'year']"
                         (rowSelected)="selectStatement($event)" (rowDeleted)="deleteRow($event)"></app-table-data>
     </mat-grid-tile>
     <mat-grid-tile>
-        2
+        <app-table-data *ngIf="selectedStatement.length" [data]="selectedStatement"
+                        [displayedColumns]="['description', 'category', 'amount']"></app-table-data>
     </mat-grid-tile>
     <mat-grid-tile>3</mat-grid-tile>
     <mat-grid-tile>4</mat-grid-tile>
