@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, Output, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from "@angular/material";
 import { SelectionModel } from "@angular/cdk/collections";
-import { StatementService } from "../../../core/services/statement/statement.service";
 
 @Component( {
 	selector: 'app-table-data',
@@ -13,12 +12,13 @@ export class TableDataComponent implements OnChanges {
 	@Input() displayedColumns: string[];
 	@Input() data;
 	@Output() rowSelected = new EventEmitter();
+	@Output() rowDeleted = new EventEmitter();
 	@ViewChild( MatPaginator, { static: true } ) paginator: MatPaginator;
 	selection = new SelectionModel( true, [] );
 	dataSource;
 
 
-	constructor( private _statementService: StatementService ) {
+	constructor() {
 
 	}
 
@@ -51,16 +51,17 @@ export class TableDataComponent implements OnChanges {
 	deleteSelected() {
 		if ( confirm( 'Are  you sure?' ) ) {
 			this.selection.selected.forEach( row => {
-				// this.selection.deselect( row );
-				console.log(row._id)
-				this._statementService.delete( row._id ).subscribe( resp => {
-					console.log( resp );
-				} );
+				this.selection.deselect( row );
+				this.emitRowDeleted( row._id );
 			} );
 		}
 	}
 
-	emit( row ) {
+	emitRowSelected( row ) {
 		this.rowSelected.emit( row );
+	}
+
+	emitRowDeleted( id ) {
+		this.rowDeleted.emit( id );
 	}
 }

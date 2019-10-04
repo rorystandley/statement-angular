@@ -14,6 +14,10 @@ export class StatementsComponent implements OnInit {
 	}
 
 	ngOnInit() {
+		this.getData();
+	}
+
+	getData() {
 		this._statementService.get().subscribe( resp => {
 			this.data = resp;
 		} );
@@ -21,5 +25,11 @@ export class StatementsComponent implements OnInit {
 
 	selectStatement( row ) {
 		console.log( row );
+	}
+
+	deleteRow( id ) {
+		this._statementService.delete( id ).subscribe( resp => {
+			this.getData();
+		} );
 	}
 }
