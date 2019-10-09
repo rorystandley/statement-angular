@@ -17,4 +17,8 @@ export class StatementService {
 		return this._http.delete( environment.apiEndpoint + `/statement/${id}` );
 	}
 
+	create( data ): Observable<any> {
+		return this._http.post( environment.apiEndpoint + `/statement`, data );
+	}
+
 }
