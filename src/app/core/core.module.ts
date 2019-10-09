@@ -1,6 +1,7 @@
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { StatementService } from './services/statement/statement.service';
+import { CustomEventEmitterService } from "./services/custom-event-emitter/custom-event-emitter.service";
 
 
 @NgModule( {
@@ -9,7 +10,8 @@ import { StatementService } from './services/statement/statement.service';
 		HttpClientModule
 	],
 	providers: [
-		StatementService
+		StatementService,
+		CustomEventEmitterService
 	]
 } )
 export class SharedCoreModule {

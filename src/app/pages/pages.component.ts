@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CreateDialogComponent } from "./components/create-dialog/create-dialog.component";
 import { MatDialog } from "@angular/material";
 import { StatementService } from "../core/services/statement/statement.service";
+import { CustomEventEmitterService } from "../core/services/custom-event-emitter/custom-event-emitter.service";
 
 @Component( {
 	selector: 'app-pages',
@@ -21,7 +22,9 @@ import { StatementService } from "../core/services/statement/statement.service";
 } )
 export class PagesComponent {
 
-	constructor( public _dialog: MatDialog, private _statementService: StatementService ) {
+	constructor( public _dialog: MatDialog,
+	             private _statementService: StatementService,
+	             private _customerEventServiceEmitter: CustomEventEmitterService ) {
 
 	}
 
@@ -33,7 +36,7 @@ export class PagesComponent {
 		dialogRef.afterClosed().subscribe( result => {
 			if ( result ) {
 				this._statementService.create( JSON.parse( result ) ).subscribe( resp => {
-					console.log( resp );
+					this._customerEventServiceEmitter.emit( 'statements:get' );
 				} );
 			}
 		} );

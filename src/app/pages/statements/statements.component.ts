@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StatementService } from "../../core/services/statement/statement.service";
+import { CustomEventEmitterService } from "../../core/services/custom-event-emitter/custom-event-emitter.service";
 
 @Component( {
 	selector: 'app-statements',
@@ -11,11 +12,18 @@ export class StatementsComponent implements OnInit {
 	data = [];
 	selectedStatement = [];
 
-	constructor( private _statementService: StatementService ) {
+	constructor( private _statementService: StatementService,
+	             private _customEventServiceEmitter: CustomEventEmitterService ) {
 	}
 
 	ngOnInit() {
 		this.getData();
+
+		this._customEventServiceEmitter.notifyObservable$.subscribe( event => {
+			if ( event = 'statement:get' ) {
+				this.getData();
+			}
+		} );
 	}
 
 	getData() {
