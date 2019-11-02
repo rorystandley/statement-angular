@@ -13,6 +13,7 @@ import { TableDataComponent } from "./components/table-data/table-data.component
 import { CommonModule } from "@angular/common";
 import { CreateDialogComponent } from "./components/create-dialog/create-dialog.component";
 import { FormsModule } from "@angular/forms";
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule( {
 	entryComponents: [ CreateDialogComponent ],
@@ -26,7 +27,8 @@ import { FormsModule } from "@angular/forms";
 		MatIconModule,
 		MatDialogModule,
 		CommonModule,
-		FormsModule
+		FormsModule,
+		ChartsModule
 	],
 	declarations: [
 		PagesComponent,
