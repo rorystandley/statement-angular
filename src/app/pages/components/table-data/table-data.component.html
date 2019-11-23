@@ -1,4 +1,4 @@
-<button *ngIf="enableDelete" mat-raised-button color="primary" [disabled]="!selection.hasValue()"
+<button class="delete-btn" *ngIf="enableDelete" mat-raised-button [disabled]="!selection.hasValue()"
         (click)="deleteSelected()">Delete
 </button>
 <div class="mat-elevation-z8">

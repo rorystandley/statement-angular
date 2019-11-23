@@ -3,8 +3,9 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { StatementsComponent } from "./statements/statements.component";
 import {
-	MatCheckboxModule, MatDialogModule,
-	MatGridListModule, MatIconModule,
+	MatButtonModule,
+	MatCheckboxModule, MatDialogModule, MatFormFieldModule,
+	MatGridListModule, MatIconModule, MatInputModule,
 	MatPaginatorModule,
 	MatTableModule,
 	MatToolbarModule
@@ -29,6 +30,9 @@ import { ChartsModule } from 'ng2-charts';
 		CommonModule,
 		FormsModule,
 		ChartsModule,
+		MatFormFieldModule,
+		MatInputModule,
+		MatButtonModule
 	],
 	declarations: [
 		PagesComponent,
