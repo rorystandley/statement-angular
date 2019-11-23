@@ -14,6 +14,7 @@ import { CommonModule } from "@angular/common";
 import { CreateDialogComponent } from "./components/create-dialog/create-dialog.component";
 import { FormsModule } from "@angular/forms";
 import { ChartsModule } from 'ng2-charts';
+import { ChartComponent } from "./components/chart/chart.component";
 
 @NgModule( {
 	entryComponents: [ CreateDialogComponent ],
@@ -28,13 +29,14 @@ import { ChartsModule } from 'ng2-charts';
 		MatDialogModule,
 		CommonModule,
 		FormsModule,
-		ChartsModule
+		ChartsModule,
 	],
 	declarations: [
 		PagesComponent,
 		StatementsComponent,
 		TableDataComponent,
-		CreateDialogComponent
+		CreateDialogComponent,
+		ChartComponent
 	],
 } )
 export class PagesModule {

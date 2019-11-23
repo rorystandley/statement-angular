@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StatementService } from "../../core/services/statement/statement.service";
 import { CustomEventEmitterService } from "../../core/services/custom-event-emitter/custom-event-emitter.service";
-import { ChartOptions, ChartType } from "chart.js";
-import { Label } from "ng2-charts";
+import { ChartOptions } from "chart.js";
 import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 
 @Component( {
@@ -14,6 +13,8 @@ export class StatementsComponent implements OnInit {
 
 	data = [];
 	selectedStatement = [];
+	chartLabels = [];
+	chartData = [];
 	public pieChartOptions: ChartOptions = {
 		responsive: true,
 		legend: {
@@ -28,12 +29,7 @@ export class StatementsComponent implements OnInit {
 			},
 		}
 	};
-	public pieChartLabels: Label[] = [];
-	public pieChartData: number[] = [];
-	public pieChartType: ChartType = 'pie';
-	public pieChartLegend = true;
 	public pieChartPlugins = [ pluginDataLabels ];
-	public pieChartColors = [];
 
 	constructor( private _statementService: StatementService,
 	             private _customEventServiceEmitter: CustomEventEmitterService ) {
@@ -74,15 +70,9 @@ export class StatementsComponent implements OnInit {
 				} );
 			totals.push( values.reduce( ( a: any, b: any ) =>
 				parseFloat( a ) + parseFloat( b ) ) );
-			// console.log(
-			// 	label,
-			// 	values,
-			// 	values.reduce( ( a: any, b: any ) =>
-			// 		parseFloat( a ) + parseFloat( b ) )
-			// );
 		} );
-		this.pieChartLabels = labels;
-		this.pieChartData = totals;
+		this.chartLabels = labels;
+		this.chartData = totals;
 	}
 
 	deleteRow( id ) {

@@ -1,4 +1,4 @@
-<mat-grid-list cols="2" rowHeight="1:1">
+<mat-grid-list cols="3">
     <mat-grid-tile>
         <app-table-data *ngIf="data.length" [data]="data" [displayedColumns]="['select', '_id', 'month', 'year']"
                         (rowSelected)="selectStatement($event)" (rowDeleted)="deleteRow($event)"></app-table-data>
@@ -7,16 +7,15 @@
         <app-table-data *ngIf="selectedStatement.length" [data]="selectedStatement" [enableDelete]="false"
                         [displayedColumns]="['description', 'category', 'amount']"></app-table-data>
     </mat-grid-tile>
-    <mat-grid-tile>
-        <canvas *ngIf="selectedStatement.length"
+    <mat-grid-tile *ngIf="chartData.length">
+        <canvas
                 baseChart
-                [data]="pieChartData"
-                [labels]="pieChartLabels"
-                [chartType]="pieChartType"
+                chartType="pie"
+                [data]="chartData"
+                [labels]="chartLabels"
                 [options]="pieChartOptions"
                 [plugins]="pieChartPlugins"
-                [colors]="pieChartColors"
-                [legend]="pieChartLegend">
+                [legend]="true">
         </canvas>
     </mat-grid-tile>
 </mat-grid-list>
